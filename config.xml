@@ -14,6 +14,8 @@ A simple pu application.
 Anant Nigam
 </author>
 
-<icon src="icon.png" />
+<icon src="icon.png" width="114" height="114" />
+
+<gap:splash src="splash.png" width="320" height="480" />
 
 </widget>
