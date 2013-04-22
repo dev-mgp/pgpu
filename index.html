@@ -1,37 +1,54 @@
 <!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
     <head>
-    <title>PGPU</title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-        <meta charset="utf-8">
-
-
-        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1.1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>SWF To Html5</title>
+        <link href="./tyrano/tyrano.css" rel="stylesheet" type="text/css"/>
+        
+        
+        <script type="text/javascript" src="./tyrano/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="./tyrano/jquery-ui-1.8.20.custom.min.js"></script>
+        <script type="text/javascript" src="./tyrano/jquery.a3d.min.js"></script>
+        
+        <script type="text/javascript" src="./tyrano/flash.js" ></script>
+        <script type="text/javascript" src="./tyrano/libs.js" ></script>
+        <script type="text/javascript" src="./tyrano/config.js" ></script>
+        <script type="text/javascript" src="./tyrano/tyrano.js" ></script>
+        <script type="text/javascript" src="./tyrano/tyrano.base.js" ></script>
+        
+        
         <script type="text/javascript">
-
-        function onBodyLoad()
-        {       
-            document.addEventListener("deviceready", onDeviceReady, false);
-        }
-
-        function onDeviceReady()
-        {
-            // do your thing!
-            navigator.notification.alert("Finally it's working jaani")
-        }
-
-        </script>
+            function doScroll() { if (window.pageYOffset === 0) { window.scrollTo(0,1); } }
+            window.onload = function() { setTimeout(doScroll, 100);
+                //$('#tyrano_base').center();
+            }
+            
+            </script>
     </head>
-    <body onload="onBodyLoad()">
-    <h1>Flutiform</h1>
-    
-       <div id="frame">
-          <iframe allowtransparency="true" frameborder="0" scrolling="No" src=""> 
-          <!-- Alternate content for non-supporting browsers --> 
-          </iframe>
+    <body onselectstart="return false" onContextmenu="return false" ontouchmove="event.preventDefault()">
+        <div id="tyrano_base" class="tyrano_base" style="position:absolute;top:0px;overflow:hidden">
         </div>
-    
+
     </body>
 </html>
-
