@@ -18,20 +18,20 @@
 [freeimage layer = 15]
 
 [backlay]
-[image storage=back2.png layer=4 page=back visible=true top=20 left=20]
+[image folder="fgimage" storage=back2.png layer=4 page=back visible=true top=20 left=20]
 [trans layer=4 time=2000]
 [wt]
 [position top=20 left=50]
 [font color=rgb(243,142,57) size=22]
 The case for flutiform in the treatment of asthma[r]
 [backlay]
-[image storage=screen_6_1.png layer=5 page=back visible=true top=70 left=100]
+[image folder="fgimage" storage=screen_6_1.png layer=5 page=back visible=true top=70 left=100]
 [trans layer=5 time=1]
 [wt]
-[image storage=screen_6_2.png layer=6 page=back visible=true top=140 left=100]
+[image folder="fgimage" storage=screen_6_2.png layer=6 page=back visible=true top=140 left=100]
 [trans layer=6 time=1]
 [wt]
-[image storage=screen_6_3.png layer=7 page=back visible=true top=350 left=100]
+[image folder="fgimage" storage=screen_6_3.png layer=7 page=back visible=true top=350 left=100]
 [trans layer=7 time=1]
 [wt]
 ;[l]
@@ -39,7 +39,7 @@ The case for flutiform in the treatment of asthma[r]
 
 *selpage 
 
-; [image folder="image" layer="base" page="fore" storage=back.png]
+; [image folder="fgimage" layer="base" page="fore" storage=back.png]
 
 [locate x=120 y=500 ]
 [button graphic="prev1.png" target=*prev]

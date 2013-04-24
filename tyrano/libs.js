@@ -1,8 +1,8 @@
 (function($){
     
-    //jquery 拡張
+    //jquery
     
-     //アニメーション開始。未実装　キーフレアニメは投入したい
+     //Start animation. Want to put unpopulated Kiefer anime
     $.fn.a2d=function(){
 
         return this.each(function(i){
@@ -67,20 +67,20 @@
         
     };
     
-    //現在時刻を取得
-    //現在の日
+    //Sets the current time
+    //current date
     $.getNowDate=function(){
 
         var nowdate = new Date();
-        var year = nowdate.getFullYear(); // 年
-        var mon  = nowdate.getMonth() + 1; // 月
-        var date = nowdate.getDate(); // 日
+        var year = nowdate.getFullYear(); // year
+        var mon  = nowdate.getMonth() + 1; // month
+        var date = nowdate.getDate(); // date
 
         return year+"/"+mon+"/"+date;
 
     };
     
-    //現在の時刻
+    //current time
     $.getNowTime=function(){
 
         var nowdate = new Date();
@@ -107,16 +107,16 @@
         
         var str = "";
         if(day !== 0){
-            str += day + "日";
+            str += day + "D"; //day
         }
         if(hour !== 0){
-            str += hour + "時間";
+            str += hour + "H"; //hour
         }
         if(minute !== 0){
-            str += minute + "分";
+            str += minute + "M"; //minute
         }
         if(second !== 0){
-            str += second + "秒";
+            str += second + "S"; //second
         }
         
         return str;
@@ -132,9 +132,9 @@
         var str = "";
         
         if(m !== 0){
-            str += m + "分";
+            str += m + "M"; //min
         }
-        str += s + "秒";
+        str += s + "s"; //sec
         
         return str;
     };
@@ -167,7 +167,7 @@
         
     };
     
-    //指定した拡張子を付ける。拡張子がなければ
+    //Have an extension that you specify. Without extension
     $.setExt=function(name,ext_str){
         
         var tmp = name.split(".");
@@ -179,16 +179,16 @@
         
     },
     
-    //要素をクローンします
+    //Clone the element
     $.cloneObject = function(source) {
         
         return $.extend(true,{},source);
     
     };
     
-    //透明度を適切な値に変更
+    //Change the transparency to an appropriate value
     $.convertOpacity=function(val){
-        //255をマックスとして計算する
+        //To calculate the 255 as Max
         
         var p = val / 255;
         
@@ -196,7 +196,7 @@
         
     };  
     
-    //パスにfgimage bgimage image が含まれていた場合、それを適応する
+    //If the path contains an image fgimage bgimage, adapt it
     $.convertStorage=function(path){
         
     },
@@ -229,7 +229,7 @@
             data: obj,
             dataType: 'json',
             complete: function(){
-                //通信終了時の処理
+                //At the end of communication processing
                 $.hideLoading();
             },
             success: function(data, status){
@@ -269,12 +269,12 @@
             });
             
             if (httpObj.statusText === "error") {
-                alert("ファイルが見つかりませんでした");
+                alert("Could not find file");
             }
     
     };
     
-    //クッキーを取得
+    //Get cookie
     $.getCookie = function(key) {
         var tmp = document.cookie + ";";
         var index1 = tmp.indexOf(key, 0);
@@ -303,7 +303,7 @@
         
     };
     
-    //ユーザ環境を取得
+    //Get a user's environment
     $.userenv = function(){
     
         var ua = navigator.userAgent;
@@ -319,7 +319,7 @@
     
     };
     
-    //ユーザのブラウザ情報を取得
+    //Get the user's browser information
     $.getBrowser = function(){
     
         var userAgent = window.navigator.userAgent.toLowerCase();
@@ -395,7 +395,7 @@
     };
     
     
-    //要素から空白のオブジェクトを削除して返却する
+    //Delete empty objects from elements to be returned,
     $.minifyObject = function(obj){
         
         for(key in obj){
@@ -426,13 +426,13 @@
     		if(gv =="null") return null;
     		
 		}catch(e){
-		  alert("この環境はセーブ機能を利用できません。ローカルで実行している場合などに発生します");
+		  alert("This environment is not available save feature. Occurs when the are run locally,");
 		}
 		
 		return gv;
 		
 	};
-    //オブジェクトの個数をもってきます。1
+    //Bring the number of objects.1
     $.countObj = function(obj){
         
         var num =0;
@@ -442,7 +442,7 @@
         return num;
     };
     
-    //渡されたJqueryオブジェクトにクラスをセットします
+    //Sets the class to the Jquery object passed
     $.setName = function(jobj,str){
         
         str = $.trim(str);
@@ -457,7 +457,7 @@
     
     };
     
-    //フラッシュのインストール判定
+    //Flash installation detection
     $.isFlashInstalled = function() {
           if ( navigator.plugins['Shockwave Flash'] ) {
             return true;
@@ -471,8 +471,8 @@
     };
     
     
-    /*スマホの場合は、タッチでクリックを置き換える*/
-    /*タッチ系、一応出来たけど、動作確認よくしなければならなｋ，問題なければR9にも適応*/
+    /*Sumaho if you replace click in touch*/
+    /*Well tested shall I touch series was tentatively, if an adapted without problems, k R9*/
 
     $.event.tap = function(o) {
         o.bind('touchstart', onTouchStart_);
@@ -522,8 +522,7 @@
       if ($.attrFn) {
         $.attrFn['tap'] = true;
       }
-      
-      //クリック上書き
+
       $.fn.click = $.fn.tap;
       
     } else {
@@ -536,8 +535,7 @@
     $.error_message = function(str){
         alert(str);
     };
-    
-    //クッキー設定
+
     $.setCookie = function (key, val) {
         document.cookie = key + "=" + escape(val) + ";expires=Fri, 31-Dec-2030 23:59:59;path=/;";
     }

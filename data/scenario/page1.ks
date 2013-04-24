@@ -24,10 +24,10 @@
 ;[key_mouse]
 
 [backlay]
-[image storage=back2.png layer=1 page=back visible=true top=20 left=20 ]
+[image folder="fgimage" storage=back2.png layer=1 page=back visible=true top=20 left=20 ]
 [trans layer=1 page=back time=2000]
 [wt]
-[image storage=screen_1.png layer=2 page=back visible=true pos=center top="40"]
+[image folder="fgimage" storage=screen_1.png layer=2 page=back visible=true pos=center top="40"]
 [trans layer=2 page=back method=crossfade time=1000]
 [wt]
 [position top=140]
@@ -41,7 +41,7 @@
 
 *selpage 
 
-; [image folder="image" layer="base" page="fore" storage=back.png]
+; [image folder="fgimage" layer="base" page="fore" storage=back.png]
 
 [locate x=120 y=500 ]
 [button graphic="prev1.png" target=*prev]

@@ -40,14 +40,14 @@ tyrano.core ={
         
         var array_plugins = this.config.init.plugins;
         
-        //スクリプトをロードして、そのオブジェクトを作成
+        //Load the script and create the object
         this.loadPlugins(array_plugins,function(array_src){
             that.loadModule(array_src);
         });
         
     },
     
-    //プラグインのロード処理
+    //Loading plug-ins
     loadPlugins:function(array_src,call_back){
         
         var that = this;
@@ -77,7 +77,7 @@ tyrano.core ={
 
         for(var i=0;i<array_src.length;i++){
             this[array_src[i]] = object(tyrano.plugin[array_src[i]]);
-            //操作を委譲　
+            //Transferred operations　
             this[array_src[i]].tyrano = this;
             
             (function(){
@@ -97,7 +97,7 @@ tyrano.core ={
           
     },
     
-    //プラグインに付随する関連ファイル読み込み
+    //Related file loading associated with plug-ins
     loadPluginModules:function(plugin_name,array_plugin_modules,call_back){
         
         var that = this;
@@ -106,7 +106,7 @@ tyrano.core ={
         
         //console.log(array_plugin_modules);
 
-        //読み込むモジュールがない場合、コンプリート
+        //If no modules loaded, complete
         if(array_plugin_modules.length === 0){
             
             call_back(array_plugin_modules);
@@ -135,7 +135,7 @@ tyrano.core ={
         
         //console.log(plugin_name);
         
-        //読み込み対象のプラグイン数分実行されたらビルド処理へ
+        //Load plugin minutes after running into the build process
         
         this.status.loaded_plugin++;
         
@@ -149,7 +149,7 @@ tyrano.core ={
         
     },
     
-    //ローディング完了、システムを組み上げていきます
+    //We will build the completion of loading, the system
     build:function(){
         
         
@@ -167,7 +167,7 @@ tyrano.core ={
 
 
 if (AC_FL_RunContent == 0) {
-    alert("このページでは \"AC_RunActiveContent.js\" が必要です。");
+    alert("AC_RunActiveContent.js required on this page");
 } else {
     AC_FL_RunContent(
         'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
@@ -207,9 +207,9 @@ if (!('console' in window)) {
      }
     
 $(function(){
-    //画面をノベル用に構築していくみたいな
+    //Like developing for the Novell screen
     //yunagi.init();
-    //DOM構築完了後の初期化
+    //DOM building after initialization
     //yunagi.init_loaded();
 TYRANO.init();
     

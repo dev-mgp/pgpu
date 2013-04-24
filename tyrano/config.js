@@ -8,7 +8,7 @@ var config = {
     
   base:{
       
-      width:"480",
+      width:"400",
       height:"320"
       
   },

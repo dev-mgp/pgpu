@@ -1,7 +1,7 @@
 
 tyrano.base ={
     
-    //読み込み対象のモジュール
+    //Module you want to read
     tyrano:null,
     modules:[],
     options:{
@@ -18,7 +18,7 @@ tyrano.base ={
             
     },
     
-    //画面サイズをぴったりさせます
+    //To fit screen size	
     fitBaseSize:function(width,height){
       
       var view_width = $.getViewPort().width;

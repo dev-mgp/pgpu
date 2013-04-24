@@ -18,7 +18,7 @@
 [freeimage layer = 15]
 
 [backlay]
-[image storage=back2.png layer=2 page=back visible=true top=20 left=20]
+[image folder="fgimage" storage=back2.png layer=2 page=back visible=true top=20 left=20]
 [trans layer=2 method="slide" time=2000]
 [wt]
 [position top=40]
@@ -28,17 +28,17 @@
 [font color="black" size="13"]
 <div align="center">Roll over both of the icons to read information on the economic burden of asthma[r]
 [backlay]
-[image storage=screen_2_1.png layer=3 page=back visible=true top=200 left=100]
+[image folder="fgimage" storage=screen_2_1.png layer=3 page=back visible=true top=200 left=100]
 [trans layer=3 time=1]
 [wt]
 [backlay]
-[image storage=screen_2_2.png layer=4 page=back visible=true top=200 left=400]
+[image folder="fgimage" storage=screen_2_2.png layer=4 page=back visible=true top=200 left=400]
 [trans layer=4 time=1]
 [wt]
-[image storage=img1.png layer=5 page=back visible=true top=150 left=80]
+[image folder="fgimage" storage=img1.png layer=5 page=back visible=true top=150 left=80]
 [trans layer=5 time=1]
 [wt]
-[image storage=img2.png layer=6 page=back visible=true top=150 left=380]
+[image folder="fgimage" storage=img2.png layer=6 page=back visible=true top=150 left=380]
 [trans layer=6 time=1]
 [wt]
 ;[l]
@@ -47,7 +47,7 @@
 
 *selpage 
 
-; [image folder="image" layer="base" page="fore" storage=back.png]
+; [image folder="fgimage" layer="base" page="fore" storage=back.png]
 
 [locate x=120 y=500 ]
 [button graphic="prev1.png" target=*prev]

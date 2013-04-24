@@ -19,23 +19,23 @@
 
 
 [backlay]
-[image storage=back2.png layer=2 page=back visible=true top=20 left=20]
+[image folder="fgimage" storage=back2.png layer=2 page=back visible=true top=20 left=20]
 [trans layer=2 time=2000]
 [wt]
 [position top=40]
 [font color=black size=30 bold="true"]
 <div align="center" style="height:1px;">An introduction to flutiform[r]
 [backlay]
-[image storage=screen_4_0.png layer=3 page=back visible=true top=100 left=25]
+[image folder="fgimage" storage=screen_4_0.png layer=3 page=back visible=true top=100 left=25]
 [trans layer=3 time=1]
 [wt]
-[image storage=screen_4_1.png layer=4 page=back visible=true top=280 left=140]
+[image folder="fgimage" storage=screen_4_1.png layer=4 page=back visible=true top=280 left=140]
 [trans layer=4 time=1]
 [wt]
-[image storage=screen_4_2.png layer=5 page=back visible=true top=280 pos=center]
+[image folder="fgimage" storage=screen_4_2.png layer=5 page=back visible=true top=280 pos=center]
 [trans layer=5 time=1]
 [wt]
-[image storage=screen_4_3.png layer=6 page=back visible=true top=280 left=500]
+[image folder="fgimage" storage=screen_4_3.png layer=6 page=back visible=true top=280 left=500]
 [trans layer=6 time=1]
 [wt]
 ;[l]
@@ -44,7 +44,7 @@
 
 *selpage 
 
-; [image folder="image" layer="base" page="fore" storage=back.png]
+; [image folder="fgimage" layer="base" page="fore" storage=back.png]
 
 [locate x=120 y=500 ]
 [button graphic="prev1.png" target=*prev]
