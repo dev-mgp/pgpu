@@ -22,11 +22,8 @@
 
 @class CDVPlugin;
 @class CDVPluginResult;
-@class CDVWhitelist;
 
 @protocol CDVCommandDelegate <NSObject>
-
-@property (nonatomic, readonly) NSDictionary* settings;
 
 - (NSString*)pathForResource:(NSString*)resourcepath;
 - (id)getCommandInstance:(NSString*)pluginName;
@@ -47,9 +44,5 @@
 - (void)evalJs:(NSString*)js scheduledOnRunLoop:(BOOL)scheduledOnRunLoop;
 // Runs the given block on a background thread using a shared thread-pool.
 - (void)runInBackground:(void (^)())block;
-// Returns the User-Agent of the associated UIWebView.
-- (NSString*)userAgent;
-// Returns whether the given URL passes the white-list.
-- (BOOL)URLIsWhitelisted:(NSURL*)url;
 
 @end
