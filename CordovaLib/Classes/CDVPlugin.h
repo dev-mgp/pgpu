@@ -23,7 +23,6 @@
 #import "NSMutableArray+QueueAdditions.h"
 #import "CDVCommandDelegate.h"
 
-#define CDVPageDidLoadNotification @"CDVPageDidLoadNotification"
 #define CDVPluginHandleOpenURLNotification @"CDVPluginHandleOpenURLNotification"
 #define CDVPluginResetNotification @"CDVPluginResetNotification"
 #define CDVLocalNotification @"CDVLocalNotification"
@@ -31,13 +30,14 @@
 @interface CDVPlugin : NSObject {}
 
 @property (nonatomic, weak) UIWebView* webView;
+@property (nonatomic, strong) NSDictionary* settings;
 @property (nonatomic, weak) UIViewController* viewController;
 @property (nonatomic, weak) id <CDVCommandDelegate> commandDelegate;
 
 @property (readonly, assign) BOOL hasPendingOperation;
 
+- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView settings:(NSDictionary*)classSettings;
 - (CDVPlugin*)initWithWebView:(UIWebView*)theWebView;
-- (void)pluginInitialize;
 
 - (void)handleOpenURL:(NSNotification*)notification;
 - (void)onAppTerminate;

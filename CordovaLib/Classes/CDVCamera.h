@@ -22,8 +22,7 @@
 
 enum CDVDestinationType {
     DestinationTypeDataUrl = 0,
-    DestinationTypeFileUri,
-    DestinationTypeNativeUri
+    DestinationTypeFileUri
 };
 typedef NSUInteger CDVDestinationType;
 
@@ -80,7 +79,6 @@ typedef NSUInteger CDVMediaType;
 - (void)takePicture:(CDVInvokedUrlCommand*)command;
 - (void)postImage:(UIImage*)anImage withFilename:(NSString*)filename toUrl:(NSURL*)url;
 - (void)cleanup:(CDVInvokedUrlCommand*)command;
-- (void)repositionPopover:(CDVInvokedUrlCommand*)command;
 
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info;
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingImage:(UIImage*)image editingInfo:(NSDictionary*)editingInfo;

@@ -87,14 +87,14 @@
 
         for (NSUInteger i = 0; i < [_queue count]; ++i) {
             // Parse the returned JSON array.
-            NSArray* commandBatch = [[_queue objectAtIndex:i] JSONObject];
+            NSArray* commandBatch = [[_queue objectAtIndex:i] cdvjk_mutableObjectFromJSONString];
 
             // Iterate over and execute all of the commands.
             for (NSArray* jsonEntry in commandBatch) {
                 CDVInvokedUrlCommand* command = [CDVInvokedUrlCommand commandFromJson:jsonEntry];
                 if (![self execute:command]) {
 #ifdef DEBUG
-                        NSString* commandJson = [jsonEntry JSONString];
+                        NSString* commandJson = [jsonEntry cdvjk_JSONString];
                         static NSUInteger maxLogLength = 1024;
                         NSString* commandString = ([commandJson length] > maxLogLength) ?
                         [NSString stringWithFormat:@"%@[...]", [commandJson substringToIndex:maxLogLength]] :

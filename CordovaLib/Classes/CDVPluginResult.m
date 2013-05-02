@@ -18,9 +18,8 @@
  */
 
 #import "CDVPluginResult.h"
-#import "CDVJSON.h"
+#import "JSONKit.h"
 #import "CDVDebug.h"
-#import "NSData+Base64.h"
 
 @interface CDVPluginResult ()
 
@@ -89,24 +88,9 @@ static NSArray* org_apache_cordova_CommandStatusMsgs;
     return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithDouble:theMessage]];
 }
 
-+ (CDVPluginResult*)resultWithStatus:(CDVCommandStatus)statusOrdinal messageAsBool:(BOOL)theMessage
-{
-    return [[self alloc] initWithStatus:statusOrdinal message:[NSNumber numberWithBool:theMessage]];
-}
-
 + (CDVPluginResult*)resultWithStatus:(CDVCommandStatus)statusOrdinal messageAsDictionary:(NSDictionary*)theMessage
 {
     return [[self alloc] initWithStatus:statusOrdinal message:theMessage];
-}
-
-+ (CDVPluginResult*)resultWithStatus:(CDVCommandStatus)statusOrdinal messageAsArrayBuffer:(NSData*)theMessage
-{
-    NSDictionary* arrDict = [NSDictionary dictionaryWithObjectsAndKeys:
-        @"ArrayBuffer", @"CDVType",
-        [theMessage base64EncodedString], @"data",
-        nil];
-
-    return [[self alloc] initWithStatus:statusOrdinal message:arrDict];
 }
 
 + (CDVPluginResult*)resultWithStatus:(CDVCommandStatus)statusOrdinal messageToErrorObject:(int)errorCode
@@ -123,23 +107,11 @@ static NSArray* org_apache_cordova_CommandStatusMsgs;
 
 - (NSString*)toJSONString
 {
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-        self.status, @"status",
-        self.message ? self.                                message:[NSNull null], @"message",
-        self.keepCallback, @"keepCallback",
-        nil];
-
-    NSError* error = nil;
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:dict
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:&error];
-    NSString* resultString = nil;
-
-    if (error != nil) {
-        NSLog(@"toJSONString error: %@", [error localizedDescription]);
-    } else {
-        resultString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
+    NSString* resultString = [[NSDictionary dictionaryWithObjectsAndKeys:
+            self.status, @"status",
+            self.message ? self.                                 message:[NSNull null], @"message",
+            self.keepCallback, @"keepCallback",
+            nil] cdvjk_JSONString];
 
     if ([[self class] isVerbose]) {
         NSLog(@"PluginResult:toJSONString - %@", resultString);
