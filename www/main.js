@@ -29,15 +29,16 @@ function doResize() {
 	var minRatio = 0.01;
 	if(!this.boundObj)
 	this.boundObj = $('.ABox');
-    var dev_width = $('[data-role="page"]').first().width();
-    var dev_hight = $('[data-role="page"]').first().height();
-	var ratioW = dev_width / this.boundObj.width();
-	var ratioH = dev_hight / this.boundObj.height();
+	var ratioW = ($(window).width()-20) / this.boundObj.width();
+	var ratioH = ($(window).height()-20) / this.boundObj.height();
 	var ratio = ratioH > ratioW ? ratioW : ratioH;
 	ratio = ratio > minRatio ? ratio : minRatio;
 
-	var org_x = (dev_width - this.boundObj.width() * ratio )/2;
-	this.boundObj.css('left',org_x+'px');
+	var org_x = 0;
+	if($(window).width()>this.boundObj.width()) {
+		var org_x = ($(window).width() - this.boundObj.width()) / ratio / 2;
+	}
+//	this.boundObj.css('left',org_x+'px');
 
 	this.boundObj.css('-webkit-transform', 'scale(' + ratio + ', ' + ratio + ')');
 	this.boundObj.css('-webkit-transform-origin', '0% 0%');
