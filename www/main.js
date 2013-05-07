@@ -29,15 +29,17 @@ function doResize() {
 	var minRatio = 0.01;
 	if(!this.boundObj)
 	this.boundObj = $('.ABox');
-    var dev_width = $('[data-role="page"]').first().width();
-    var dev_hight = $('[data-role="page"]').first().height();
+    var dev_width = window.innerWidth;  //$('[data-role="page"]').first().width();
+    var dev_hight = window.innerHeight; //$('[data-role="page"]').first().height();
 	var ratioW = dev_width / this.boundObj.width();
 	var ratioH = dev_hight / this.boundObj.height();
 	var ratio = ratioH > ratioW ? ratioW : ratioH;
 	ratio = ratio > minRatio ? ratio : minRatio;
 
 	var org_x = (dev_width - this.boundObj.width() * ratio )/2;
+	var org_y = (dev_hight - this.boundObj.height() * ratio )/2;
 	this.boundObj.css('left',org_x+'px');
+	this.boundObj.css('top',org_y+'px');
 
 	this.boundObj.css('-webkit-transform', 'scale(' + ratio + ', ' + ratio + ')');
 	this.boundObj.css('-webkit-transform-origin', '0% 0%');
@@ -46,8 +48,8 @@ function doResize() {
 	this.boundObj.css('-ms-transform', 'scale(' + ratio + ', ' + ratio + ')');
 	this.boundObj.css('-ms-transform-origin', '0% 0%');
     
-    console.log("w="+$(window).width());
-    console.log("h="+$(window).height());
+    console.log("w="+dev_width);
+    console.log("h="+dev_hight);
     
 }
 
@@ -185,13 +187,13 @@ $( document ).on( "pageshow", "#page_01", function( event, ui ) {
 	.addText("inhaler in the treatment of", 40, 280, "", "split", 1000, "linear", "txt03",true)
 	.addText("patients with asthma", 40, 340, "", "split", 1000, "linear", "txt04",true)
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv")
-	.setStyle("prv", "cursor:pointer")
-	.addEvent("prv", "click", go_prev_pg)
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv01")
+	.setStyle("prv01", "cursor:pointer")
+	.addEvent("prv01", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt")
-	.setStyle("nxt", "cursor:pointer")
-	.addEvent("nxt", "click", go_next_pg)
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt01")
+	.setStyle("nxt01", "cursor:pointer")
+	.addEvent("nxt01", "click", go_next_pg)
 
 	TheBoard.go()
 
@@ -217,11 +219,11 @@ $( document ).on( "pageshow", "#page_02", function( event, ui ) {
 	})
 
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv02")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv02")
 	.setStyle("prv02", "cursor:pointer")
 	.addEvent("prv02", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt02")
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt02")
 	.setStyle("nxt02", "cursor:pointer")
 	.addEvent("nxt02", "click", go_next_pg)
 
@@ -300,11 +302,11 @@ $( document ).on( "pageshow", "#page_03", function( event, ui ) {
 	.addImage("content/screen_6_1.png", 100, 360, "", "", "appear", 500, "linear", true)
 
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv03")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv03")
 	.setStyle("prv03", "cursor:pointer")
 	.addEvent("prv03", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt03")
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt03")
 	.setStyle("nxt03", "cursor:pointer")
 	.addEvent("nxt03", "click", go_next_pg)
 
@@ -324,11 +326,11 @@ $( document ).on( "pageshow", "#page_04", function( event, ui ) {
 	.addImage("content/screen_4_2.png", 320, 280, "", "", "zoom", 1000, "backOut", "",true)
 	.addImage("content/screen_4_3.png", 500, 280, "", "", "zoom", 1000, "backOut", "",true)
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv04")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv04")
 	.setStyle("prv04", "cursor:pointer")
 	.addEvent("prv04", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt04")
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt04")
 	.setStyle("nxt04", "cursor:pointer")
 	.addEvent("nxt04", "click", go_next_pg)
 
@@ -371,11 +373,11 @@ $( document ).on( "pageshow", "#page_05", function( event, ui ) {
 	.delay(500)
 
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv05")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv05")
 	.setStyle("prv05", "cursor:pointer")
 	.addEvent("prv05", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt05")
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt05")
 	.setStyle("nxt05", "cursor:pointer")
 	.addEvent("nxt05", "click", go_next_pg)
 
@@ -395,11 +397,11 @@ $( document ).on( "pageshow", "#page_06", function( event, ui ) {
 	.addImage("content/screen_6_3.png", 100, 350, "", "", "FromRight", 1000, "linear", "",true)
 
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv06")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv06")
 	.setStyle("prv06", "cursor:pointer")
 	.addEvent("prv06", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt06")
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt06")
 	.setStyle("nxt06", "cursor:pointer")
 	.addEvent("nxt06", "click", go_next_pg)
 
@@ -420,11 +422,11 @@ $( document ).on( "pageshow", "#page_07", function( event, ui ) {
 	.addImage("content/screen_7_5.png", 450, 140, "", "", "zoom", 1000, "backOut", "",true)
 
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv07")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv07")
 	.setStyle("prv07", "cursor:pointer")
 	.addEvent("prv07", "click", go_prev_pg)
 	// Next
-	.addImage("image/next2.png", 160, 490, "", "", "fade", 500, "linear", "nxt07")
+	.addImage("image/next2.png", 170, 497, "", "", "fade", 500, "linear", "nxt07")
 	.setStyle("nxt07", "cursor:pointer")
 	.addEvent("nxt07", "click", go_next_pg)
 
@@ -452,7 +454,7 @@ $( document ).on( "pageshow", "#page_08", function( event, ui ) {
 	.delay(1000)
 
 	// Prev
-	.addImage("image/prev2.png", 100, 490, "", "", "fade", 500, "linear", "prv08")
+	.addImage("image/prev2.png", 100, 497, "", "", "fade", 500, "linear", "prv08")
 	.setStyle("prv08", "cursor:pointer")
 	.addEvent("prv08", "click", go_prev_pg)
 	// Next

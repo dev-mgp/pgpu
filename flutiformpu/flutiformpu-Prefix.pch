@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'flutiformpu' target in the 'flutiformpu' project
+// Prefix header for all source files of the 'BoardJS' target in the 'BoardJS' project
 //
 
 #ifdef __OBJC__

@@ -354,6 +354,13 @@ background: linear-gradient(top, rgb(149,55,53) 0%,rgb(119,25,23) 100%);
 /* =================== */
 /*     */
 /* =================== */
+#page_00 #btn0, #page_00 #btn1, #page_00 #btn2 {
+	text-align:left;
+	padding: 8px 40px;
+}
+#page_00 .ui-btn-text{
+	font-size: 20px;
+}
 #page_01 #txt01, #page_01 #txt02, #page_01 #txt03, #page_01 #txt04 {
 	font-size: 32px;
 	color: rgb(244,156,0);
