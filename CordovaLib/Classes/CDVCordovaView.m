@@ -17,11 +17,21 @@
  under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import "CDVCordovaView.h"
 
-@interface CDVUserAgentUtil : NSObject
-+ (NSString*)originalUserAgent;
-+ (void)acquireLock:(void (^)(NSInteger lockToken))block;
-+ (void)releaseLock:(NSInteger*)lockToken;
-+ (void)setUserAgent:(NSString*)value lockToken:(NSInteger)lockToken;
+@implementation CDVCordovaView
+
+- (void)loadRequest:(NSURLRequest*)request
+{
+    [super loadRequest:request];
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code.
+}
+*/
+
 @end

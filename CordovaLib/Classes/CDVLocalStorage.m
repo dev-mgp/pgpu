@@ -31,13 +31,21 @@
 
 @synthesize backupInfo, webviewDelegate;
 
-- (void)pluginInitialize
+- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView settings:(NSDictionary*)classSettings
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResignActive)
-                                                 name:UIApplicationWillResignActiveNotification object:nil];
-    BOOL cloudBackup = [@"cloud" isEqualToString:self.commandDelegate.settings[@"BackupWebStorage"]];
+    self = (CDVLocalStorage*)[super initWithWebView:theWebView settings:classSettings];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResignActive)
+                                                     name:UIApplicationWillResignActiveNotification object:nil];
 
-    self.backupInfo = [[self class] createBackupInfoWithCloudBackup:cloudBackup];
+        self.backupInfo = [[self class] createBackupInfoWithCloudBackup:[(NSString*)[classSettings objectForKey:@"backupType"] isEqualToString:@"cloud"]];
+
+        // over-ride current webview delegate (for restore reasons)
+        self.webviewDelegate = theWebView.delegate;
+        theWebView.delegate = self;
+    }
+
+    return self;
 }
 
 #pragma mark -
@@ -403,9 +411,37 @@
     [self onResignActive];
 }
 
-- (void)onReset
+#pragma mark -
+#pragma mark UIWebviewDelegate implementation and forwarding
+
+- (void)webViewDidStartLoad:(UIWebView*)theWebView
 {
     [self restore:nil];
+
+    return [self.webviewDelegate webViewDidStartLoad:theWebView];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView*)theWebView
+{
+    return [self.webviewDelegate webViewDidFinishLoad:theWebView];
+}
+
+- (void)webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error
+{
+    return [self.webviewDelegate webView:theWebView didFailLoadWithError:error];
+}
+
+- (BOOL)webView:(UIWebView*)theWebView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return [self.webviewDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
+}
+
+#pragma mark -
+#pragma mark Over-rides
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];   // this will remove all notification unless added using addObserverForName:object:queue:usingBlock:
 }
 
 @end
